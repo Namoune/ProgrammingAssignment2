@@ -1,25 +1,25 @@
 makeCacheMatrix <- function(x = matrix()) {
-  m<-NULL
+  mat<-NULL
   set<-function(y){
   x<<-y
-  m<<-NULL
+  mat<<-NULL
 }
 get<-function() x
-setmatrix<-function(solve) m<<- solve
-getmatrix<-function() m
+setmat<-function(solve) mat<<- solve
+getmat<-function() mat
 list(set=set, get=get,
-   setmatrix=setmatrix,
-   getmatrix=getmatrix)
+   setmat=setmat,
+   getmat=getmat)
 }
 
 cacheSolve <- function(x=matrix(), ...) {
-    m<-x$getmatrix()
-    if(!is.null(m)){
+    mat<-x$getmat()
+    if(!is.null(mat)){
       message("getting cached data")
       return(m)
     }
-    matrix <- x$get()
-    m<-solve(matrix, ...)
-    x$setmatrix(m)
-    m
+    data <- x$get()
+    mat<-solve(data)
+    x$setmat(mat)
+    mat
 }
